@@ -1,4 +1,4 @@
-# Book My show ticket bookig in evening show for two persons
+# Book My show ticket booking in evening show for two persons using selenium java
 
 #Instruction to run
 1.Clone or download the project
