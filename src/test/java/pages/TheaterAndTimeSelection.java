@@ -15,6 +15,7 @@ public class TheaterAndTimeSelection extends BasePage{
     By selectTwoSeats = By.xpath("//div[@id='proceed-Qty']");
     By tomorrowEvening = By.xpath("//a[contains(@href,'MT/tomorrow')]");
     By confirmBuyTicket =By.xpath("//a[@id='lnkMainBuyTickets']");
+    By SelectTimeNight = By.xpath("//li[@data-is-down=\"false\" and @data-offline=\"false\" and @data-has-mticket=\"true\"][1]//a[@data-showtime-filter-index=\"night\"]");
 
     //wait for page to load
     public TheaterAndTimeSelection waitForPageToLoad (){
@@ -26,13 +27,14 @@ public class TheaterAndTimeSelection extends BasePage{
         waitVisibility(WaitElement);
         Thread.sleep(2000);
         Boolean isPresent = driver.findElements(SelectTime).size() > 0;
+        Boolean isPresentNight = driver.findElements(SelectTimeNight).size() > 0;
         if(isPresent){
+            Thread.sleep(2000);
             click(SelectTime);
         }
-        else{
-            click(tomorrowEvening);
-            Thread.sleep(3000);
-            click(SelectTime);
+        else if (isPresentNight){
+            Thread.sleep(2000);
+            click(SelectTimeNight);
         }
         return this;
     }
